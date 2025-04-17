@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riddle Generator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+
+    body {
+      background: linear-gradient(135deg, #0f0f1c, #1a1a2e);
+      color: #00ffe7;
+      font-family: 'Orbitron', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background: rgba(20, 20, 40, 0.9);
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 0 25px #00ffe7;
+      max-width: 650px;
+      animation: pulseGlow 2.5s infinite alternate;
+    }
+
+    @keyframes pulseGlow {
+      from { box-shadow: 0 0 25px #00ffe7; }
+      to { box-shadow: 0 0 40px #00bfa0; }
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      font-size: 2.5rem;
+      color: #00ffe7;
+      text-shadow: 0 0 8px #00ffe7;
+    }
+
+    #riddle {
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+      color: #ffffff;
+      transition: opacity 0.3s ease;
+    }
+
+    button {
+      background: linear-gradient(45deg, #00ffe7, #00bfa0);
+      border: none;
+      padding: 14px 28px;
+      color: #0f0f1c;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-weight: bold;
+      transition: transform 0.2s, box-shadow 0.3s;
+      box-shadow: 0 0 15px #00ffe7;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 25px #00ffe7;
+    }
+
+    a {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      color: #00ffe7;
+      text-decoration: none;
+      font-size: 1rem;
+      border: 1px solid #00ffe7;
+      padding: 6px 12px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    a:hover {
+      background: #00ffe7;
+      color: #0f0f1c;
+    }
+  </style>
+</head>
+<body>
+  <a href="scratch.html">↩ Scratch Page</a>
+  <div class="container">
+    <h1>Riddle Generator</h1>
+    <div id="riddle">Click the button to get a riddle!</div>
+    <button onclick="showRiddle()">New Riddle</button>
+  </div>
+
+  <script>
+    const riddles = [
+      "What has to be broken before you can use it? <br><strong>Answer: An egg</strong>",
+      "I’m tall when I’m young, and I’m short when I’m old. What am I? <br><strong>Answer: A candle</strong>",
+      "What month of the year has 28 days? <br><strong>Answer: All of them</strong>",
+      "What is full of holes but still holds water? <br><strong>Answer: A sponge</strong>",
+      "What question can you never answer yes to? <br><strong>Answer: Are you asleep yet?</strong>",
+      "What gets wetter the more it dries? <br><strong>Answer: A towel</strong>",
+      "I have branches, but no fruit, trunk or leaves. What am I? <br><strong>Answer: A bank</strong>"
+    ];
+
+    function showRiddle() {
+      const randomIndex = Math.floor(Math.random() * riddles.length);
+      const riddleBox = document.getElementById("riddle");
+      riddleBox.style.opacity = 0;
+      setTimeout(() => {
+        riddleBox.innerHTML = riddles[randomIndex];
+        riddleBox.style.opacity = 1;
+      }, 200);
+    }
+  </script>
+</body>
+</html>
